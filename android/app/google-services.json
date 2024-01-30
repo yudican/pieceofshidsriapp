@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845116026644",
+    "firebase_url": "https://reactfire-97e79.firebaseio.com",
+    "project_id": "reactfire-97e79",
+    "storage_bucket": "reactfire-97e79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845116026644:android:4ca8f2000aefd52bbb5c01",
+        "android_client_info": {
+          "package_name": "com.pieceofshidsriapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845116026644-sb1d4v6o707buruupmi36grv3ns0bdon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvR1xQr9QKv1Sm4iZcsNsO7FdnGR4bOe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845116026644-sb1d4v6o707buruupmi36grv3ns0bdon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
