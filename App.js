@@ -19,18 +19,19 @@ const App = props => {
   const initBackGroundFetch = () => {
     BackgroundFetch.configure(
       {
-        minimumFetchInterval: 5, // <-- minutes (15 is minimum allowed)
+        minimumFetchInterval: 1, // <-- minutes (15 is minimum allowed)
         // Android options
         forceAlarmManager: true, // <-- Set true to bypass JobScheduler.
-        stopOnTerminate: false,
+        stopOnTerminate: true,
         startOnBoot: true,
-        requiredNetworkType: BackgroundFetch.NETWORK_TYPE_NONE, // Network connection needed
+        requiredNetworkType: BackgroundFetch.NETWORK_TYPE_ANY, // Network connection needed
       },
       async taskId => {
+        console.log(taskId);
         // Do stuff with notifications, for example:
         const dateTime = new Date();
-        dateTime.setHours(9, 15, 0); // akan dijalankan setiap pukul 8:10:00
-        scheduleNotification(dateTime, 'Alarm Ringing', 'Message Here');
+        dateTime.setHours(7, 0, 0); // akan dijalankan setiap pukul 07:00:00
+        await scheduleNotification(dateTime, 'Alarm Ringing', 'Message Here');
         BackgroundFetch.finish(taskId);
       },
       error => {
@@ -45,6 +46,7 @@ const App = props => {
     requestNotificationPermission();
     configureNotification();
     initBackGroundFetch();
+
     const dismissSubscription = RNAlarmEmitter.addListener(
       'OnNotificationDismissed',
       data => console.log(JSON.parse(e)),

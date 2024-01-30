@@ -5,11 +5,13 @@ import {PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 
 export const configureNotification = () => {
   PushNotification.configure({
-    onAction: handleNotification,
+    onNotification: notification => handleNotification(notification),
+    onAction: notification => handleNotification(notification),
     popInitialNotification: true,
     requestPermissions: true,
   });
 };
+
 export const scheduleNotification = async (
   date = new Date(),
   title = 'Alarm Ringing',
@@ -57,19 +59,17 @@ export const scheduleNotification = async (
     vibration: 1000,
     soundName: 'alarm.mp3',
     allowWhileIdle: true,
-    invokeApp: true,
-    repeatTime: 1,
-    repeatType: 'time',
-    allowWhileIdle: false,
+    invokeApp: false,
   });
 };
+
 export const createChannelNotification = () => {
   PushNotification.createChannel({
     channelId: 'my_channel_id',
     channelName: 'my_channel_id',
-    onNotification: handleNotification,
   });
 };
+
 export const requestNotificationPermission = async () => {
   try {
     if (Platform.OS === 'android') {
@@ -103,5 +103,7 @@ export const requestNotificationPermission = async () => {
 };
 
 export const handleNotification = notification => {
-  return ReactNativeAN.stopAlarmSound();
+  PushNotification.removeAllDeliveredNotifications();
+  PushNotification.cancelAllLocalNotifications();
+  ReactNativeAN.stopAlarmSound();
 };
